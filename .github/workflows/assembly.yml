@@ -33,6 +33,11 @@ jobs:
 
       - name: Print start message
         run: echo "Starting assembly of the vehicles"
+        
+      - name: Print manual run info
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          echo "Manual run: deploying ${{ inputs.vehicle }} to ${{ inputs.environment }}"
 
   build_car:
     needs: start
